@@ -1,3 +1,53 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>리노바 관리자</title><link rel="stylesheet" href="css/admin.css"></head><body>
-<main class="login" id="login"><img src="images/logo-renova.png"><h1>RENOVA 관리자</h1><p>비밀번호를 입력하세요.</p><input id="pw" type="password" placeholder="비밀번호"><button onclick="login()">로그인</button><small>초기 비밀번호: 1234</small></main>
-<main class="dash" id="dash" hidden><header><h1>리노바 관리자</h1><button onclick="logout()">로그아웃</button></header><section class="grid"><div class="box"><b id="total">0</b><span>전체 방문수</span></div><div class="box"><b id="today">0</b><span>오늘 방문수</span></div><div class="box"><b id="last">-</b><span>최근 방문시간</span></div><div class="box"><b id="device">-</b><span>내 기기</span></div></section><section class="panel"><h2>방문자 통계 안내</h2><p>현재 버전은 계정 없이 사용하는 간단 방문자 통계입니다. 같은 브라우저 저장 기준으로 표시됩니다.</p><button onclick="resetStats()">방문자 기록 초기화</button><a href="index.html">홈페이지 보기</a></section><section class="panel"><h2>연락처</h2><p>010-8476-7456 / 010-9169-7557</p><p>카카오톡 상담, 네이버 블로그 연결 완료</p></section></main><script src="js/admin.js"></script></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>리노바 관리자</title>
+<style>
+body{font-family:Arial,sans-serif;padding:40px}
+input,button,textarea{font-size:18px;padding:10px;margin:6px}
+#dash{display:none}
+</style>
+</head>
+<body>
+
+<div id="login">
+  <h1>RENOVA 관리자</h1>
+  <p>비밀번호를 입력하세요.</p>
+  <input type="password" id="password" placeholder="비밀번호">
+  <button onclick="login()">로그인</button>
+  <span>초기 비밀번호: 1234</span>
+</div>
+
+<div id="dash">
+  <h1>관리자 페이지</h1>
+  <button onclick="logout()">로그아웃</button>
+
+  <h2>시공사례 추가</h2>
+  <input placeholder="제목">
+  <br>
+  <textarea placeholder="설명"></textarea>
+  <br>
+  <input type="file" multiple accept="image/*">
+  <br>
+  <button>저장</button>
+</div>
+
+<script>
+function login(){
+  var pw=document.getElementById("password").value;
+  if(pw==="1234"){
+    document.getElementById("login").style.display="none";
+    document.getElementById("dash").style.display="block";
+  }else{
+    alert("비밀번호가 다릅니다.");
+  }
+}
+function logout(){
+  document.getElementById("dash").style.display="none";
+  document.getElementById("login").style.display="block";
+}
+</script>
+
+</body>
+</html>

@@ -1,1 +1,20 @@
-function login(){if(document.getElementById('pw').value==='1234'){localStorage.setItem('renovaAdmin','1');show()}else alert('비밀번호가 다릅니다.')}function logout(){localStorage.removeItem('renovaAdmin');location.reload()}function show(){document.getElementById('login').hidden=true;document.getElementById('dash').hidden=false;load()}function load(){const s=JSON.parse(localStorage.getItem('renovaStats')||'{}');total.textContent=s.total||0;today.textContent=s.today||0;last.textContent=s.last||'-';device.textContent=s.device||(/Mobi|Android/i.test(navigator.userAgent)?'모바일':'PC')}function resetStats(){if(confirm('방문자 기록을 초기화할까요?')){localStorage.removeItem('renovaStats');load()}}if(localStorage.getItem('renovaAdmin')==='1')show();
+function login(){
+  const input = document.getElementById("password") || document.getElementById("pw");
+  if(input && input.value === "1234"){
+    localStorage.setItem("renovaAdmin","1");
+    document.getElementById("login").hidden = true;
+    document.getElementById("dash").hidden = false;
+  } else {
+    alert("비밀번호가 다릅니다.");
+  }
+}
+
+function logout(){
+  localStorage.removeItem("renovaAdmin");
+  location.reload();
+}
+
+if(localStorage.getItem("renovaAdmin")==="1"){
+  document.getElementById("login").hidden = true;
+  document.getElementById("dash").hidden = false;
+}

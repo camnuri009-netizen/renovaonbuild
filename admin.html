@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>리노바 관리자</title><link rel="stylesheet" href="admin.css"></head>
+<body>
+<main id="loginBox" class="login"><img src="logo-renova.png"><h1>RENOVA 관리자</h1><input type="password" id="password" placeholder="비밀번호"><button onclick="login()">로그인</button><small>비밀번호 1234</small></main>
+<main id="dash" class="dash">
+<header><h1>리노바 관리자</h1><button onclick="logout()">로그아웃</button></header>
+<section class="card"><h2>메인 배너 이미지 교체</h2><input id="heroImage" type="file" accept="image/*"><button onclick="saveHero()">배너 저장</button></section>
+<section class="card"><h2>회사소개 이미지 3장 교체</h2><input id="aboutImgs" type="file" accept="image/*" multiple><div id="aboutPreview" class="previewGrid"></div><button onclick="saveAbout()">회사소개 이미지 저장</button><button class="danger" onclick="clearAbout()">회사소개 이미지 삭제</button></section>
+<section class="card"><h2>서비스 이미지 관리</h2><p class="sub">서비스 오른쪽의 <b>이미지 교체</b>를 누르면 대표 이미지와 상세 이미지를 넣을 수 있습니다.</p><div id="serviceSimpleList"></div></section>
+<section class="card"><h2>시공사례 추가</h2><input id="caseTitle" placeholder="제목"><textarea id="caseDesc" placeholder="설명"></textarea><input id="caseImages" type="file" accept="image/*" multiple><button onclick="saveCase()">시공사례 저장</button><div id="caseList"></div></section>
+<section class="card"><h2>전화번호 · 링크</h2><input id="phone1Input" placeholder="010-8476-7456"><input id="phone2Input" placeholder="010-9169-7557"><input id="blogInput" placeholder="네이버 블로그 주소"><input id="kakaoInput" placeholder="카카오 채널 주소"><button onclick="saveSettings()">저장</button></section>
+</main>
+<div id="serviceEditor" class="popup"><div class="popupBox"><button class="close" onclick="closeServiceEditor()">닫기</button><h2 id="editServiceTitle">서비스 이미지 교체</h2><input id="editTitle" placeholder="서비스 제목"><textarea id="editDesc" placeholder="간단 설명"></textarea><textarea id="editDetailDesc" placeholder="상세 설명"></textarea><p class="sub">대표 이미지</p><input id="editMainImage" type="file" accept="image/*"><div id="editMainPreview" class="previewGrid"></div><p class="sub">상세 이미지 추가</p><input id="editDetailImages" type="file" accept="image/*" multiple><div id="editDetailPreview" class="previewGrid"></div><button onclick="saveServiceEditor()">서비스 저장</button></div></div>
+<script src="admin.js"></script></body></html>

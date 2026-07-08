@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>리노바 관리자</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<main id="login" class="login">
+  <img src="logo-renova.png" alt="RENOVA">
+  <h1>RENOVA 관리자</h1>
+  <p>비밀번호를 입력하세요.</p>
+  <input type="password" id="password" placeholder="비밀번호">
+  <button onclick="login()">로그인</button>
+  <small>초기 비밀번호: 1234</small>
+</main>
+
+<main id="dash" class="dash">
+  <header>
+    <h1>리노바 관리자</h1>
+    <button onclick="logout()">로그아웃</button>
+  </header>
+
+  <section class="card">
+    <h2>기본 정보 수정</h2>
+    <input id="phone1" placeholder="전화번호 1 예: 010-8476-7456">
+    <input id="phone2" placeholder="전화번호 2 예: 010-9169-7557">
+    <input id="blog" placeholder="네이버 블로그 주소">
+    <input id="kakao" placeholder="카카오 채널 주소">
+    <button onclick="saveSettings()">기본 정보 저장</button>
+  </section>
+
+  <section class="card">
+    <h2>시공사례 추가</h2>
+    <input id="caseTitle" placeholder="제목 예: 상가철거 시공사례">
+    <textarea id="caseDesc" placeholder="설명 입력"></textarea>
+    <input id="caseImages" type="file" accept="image/*" multiple>
+    <p>사진은 최대 10장까지 등록됩니다.</p>
+    <button onclick="saveCase()">시공사례 저장</button>
+  </section>
+
+  <section class="card">
+    <h2>등록된 시공사례</h2>
+    <div id="caseList"></div>
+  </section>
+</main>
+
+<script>
+function login(){
+  const pw = document.getElementById("password").value;
+  if(pw === "1234"){
+    localStorage.setItem("renovaAdmin","1");
+    document.getElementById("login").style.display="none";
+    document.getElementById("dash").style.display="block";
+    loadSettings();
+    renderCases();
+  }else{
+    alert("비밀번호가 다릅니다.");
+  }
+}
+function logout(){
+  localStorage.removeItem("renovaAdmin");
+  location.reload();
+}
+function getSettings(){
+  return JSON.parse(localStorage.getItem("renovaSettings") || "{}");
+}
+function saveSettings(){
+  const settings = {
+    phone1: document.getElementById("phone1").value.trim(),
+    phone2: document.getElementById("phone2").value.trim(),
+    blog: document.getElementById("blog").value.trim(),
+    kakao: document.getElementById("kakao").value.trim()
+  };
+  localStorage.setItem("renovaSettings", JSON.stringify(settings));
+  alert("기본 정보가 저장되었습니다.");
+}
+function loadSettings(){
+  const s = getSettings();
+  document.getElementById("phone1").value = s.phone1 || "010-8476-7456";
+  document.getElementById("phone2").value = s.phone2 || "010-9169-7557";
+  document.getElementById("blog").value = s.blog || "";
+  document.getElementById("kakao").value = s.kakao || "";
+}
+function getCases(){
+  return JSON.parse(localStorage.getItem("renovaCases") || "[]");
+}
+function saveCases(cases){
+  localStorage.setItem("renovaCases", JSON.stringify(cases));
+}
+function saveCase(){
+  const title = document.getElementById("caseTitle").value.trim();
+  const desc = document.getElementById("caseDesc").value.trim();
+  const files = Array.from(document.getElementById("caseImages").files).slice(0,10);
+  if(!title){ alert("제목을 입력해주세요."); return; }
+  const readers = files.map(file => new Promise(resolve => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.readAsDataURL(file);
+  }));
+  Promise.all(readers).then(images => {
+    const cases = getCases();
+    cases.unshift({id:Date.now(), title, desc, images});
+    saveCases(cases);
+    document.getElementById("caseTitle").value="";
+    document.getElementById("caseDesc").value="";
+    document.getElementById("caseImages").value="";
+    renderCases();
+    alert("시공사례가 저장되었습니다.");
+  });
+}
+function deleteCase(id){
+  if(!confirm("삭제하시겠습니까?")) return;
+  saveCases(getCases().filter(item => item.id !== id));
+  renderCases();
+}
+function renderCases(){
+  const list = document.getElementById("caseList");
+  if(!list) return;
+  const cases = getCases();
+  if(cases.length === 0){
+    list.innerHTML = "<p>등록된 시공사례가 없습니다.</p>";
+    return;
+  }
+  list.innerHTML = cases.map(item => `
+    <div class="caseItem">
+      <h3>${item.title}</h3>
+      <p>${item.desc || ""}</p>
+      <div class="caseImages">
+        ${(item.images || []).map(img => `<img src="${img}" alt="">`).join("")}
+      </div>
+      <button class="danger" onclick="deleteCase(${item.id})">삭제</button>
+    </div>
+  `).join("");
+}
+document.addEventListener("DOMContentLoaded", () => {
+  if(localStorage.getItem("renovaAdmin")==="1"){
+    document.getElementById("login").style.display="none";
+    document.getElementById("dash").style.display="block";
+    loadSettings();
+    renderCases();
+  }
+});
+</script>
+</body>
+</html>

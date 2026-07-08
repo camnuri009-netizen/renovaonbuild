@@ -1,98 +1,20 @@
-const ADMIN_PASSWORD = "1234";
-
-function login() {
-  const password = document.getElementById("password").value;
-
-  if (password === ADMIN_PASSWORD) {
+function login(){
+  const input = document.getElementById("password") || document.getElementById("pw");
+  if(input && input.value === "1234"){
+    localStorage.setItem("renovaAdmin","1");
     document.getElementById("login").hidden = true;
     document.getElementById("dash").hidden = false;
-    renderCases();
   } else {
-    alert("비밀번호가 틀렸습니다.");
+    alert("비밀번호가 다릅니다.");
   }
 }
 
-function logout() {
-  document.getElementById("dash").hidden = true;
-  document.getElementById("login").hidden = false;
+function logout(){
+  localStorage.removeItem("renovaAdmin");
+  location.reload();
 }
 
-function getCases() {
-  return JSON.parse(localStorage.getItem("renovaCases") || "[]");
+if(localStorage.getItem("renovaAdmin")==="1"){
+  document.getElementById("login").hidden = true;
+  document.getElementById("dash").hidden = false;
 }
-
-function saveCases(cases) {
-  localStorage.setItem("renovaCases", JSON.stringify(cases));
-}
-
-function saveCase() {
-  const title = document.getElementById("caseTitle").value.trim();
-  const desc = document.getElementById("caseDesc").value.trim();
-  const files = Array.from(document.getElementById("caseImages").files).slice(0, 10);
-
-  if (!title) {
-    alert("제목을 입력해주세요.");
-    return;
-  }
-
-  const readers = files.map(file => {
-    return new Promise(resolve => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result);
-      reader.readAsDataURL(file);
-    });
-  });
-
-  Promise.all(readers).then(images => {
-    const cases = getCases();
-
-    cases.unshift({
-      id: Date.now(),
-      title,
-      desc,
-      images
-    });
-
-    saveCases(cases);
-
-    document.getElementById("caseTitle").value = "";
-    document.getElementById("caseDesc").value = "";
-    document.getElementById("caseImages").value = "";
-
-    renderCases();
-    alert("시공사례가 저장되었습니다.");
-  });
-}
-
-function deleteCase(id) {
-  if (!confirm("삭제하시겠습니까?")) return;
-
-  const cases = getCases().filter(item => item.id !== id);
-  saveCases(cases);
-  renderCases();
-}
-
-function renderCases() {
-  const list = document.getElementById("caseList");
-  const cases = getCases();
-
-  if (!list) return;
-
-  if (cases.length === 0) {
-    list.innerHTML = "<p>등록된 시공사례가 없습니다.</p>";
-    return;
-  }
-
-  list.innerHTML = cases.map(item => `
-    <div class="case-item">
-      <h3>${item.title}</h3>
-      <p>${item.desc || ""}</p>
-      <div class="case-images">
-        ${item.images.map(img => `<img src="${img}" alt="">`).join("")}
-      </div>
-      <button onclick="deleteCase(${item.id})">삭제</button>
-    </div>
-  `).join("");
-}
-
-document.addEventListener("DOMContentLoaded", renderCases);

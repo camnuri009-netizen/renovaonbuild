@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>리노바 관리자</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<main id="login" class="login">
+  <img src="logo-renova.png" alt="RENOVA">
+  <h1>RENOVA 관리자</h1>
+  <p>비밀번호를 입력하세요.</p>
+  <input type="password" id="password" placeholder="비밀번호">
+  <button onclick="login()">로그인</button>
+  <small>초기 비밀번호: 1234</small>
+</main>
+
+<main id="dash" class="dash">
+  <header><h1>리노바 관리자</h1><button onclick="logout()">로그아웃</button></header>
+
+  <section class="card">
+    <h2>메뉴 관리</h2>
+    <div id="menuList"></div>
+    <button onclick="addMenu()">메뉴 추가</button>
+    <button onclick="saveMenu()">메뉴 저장</button>
+  </section>
+
+  <section class="card">
+    <h2>배너 교체 / 문구 수정</h2>
+    <input id="heroSmall" placeholder="상단 작은 문구">
+    <input id="heroTitle" placeholder="큰 제목">
+    <textarea id="heroDesc" placeholder="배너 설명"></textarea>
+    <input id="heroImage" type="file" accept="image/*">
+    <p class="sub">이미지를 선택하면 메인 배너 배경으로 저장됩니다.</p>
+    <button onclick="saveHero()">배너 저장</button>
+  </section>
+
+  <section class="card">
+    <h2>회사소개 수정</h2>
+    <input id="aboutTitle" placeholder="회사소개 제목">
+    <textarea id="aboutText" placeholder="회사소개 설명"></textarea>
+    <button onclick="saveAbout()">회사소개 저장</button>
+  </section>
+
+  <section class="card">
+    <h2>서비스 수정</h2>
+    <div id="serviceList"></div>
+    <button onclick="addService()">서비스 추가</button>
+    <button onclick="saveServices()">서비스 저장</button>
+  </section>
+
+  <section class="card">
+    <h2>기본 정보 수정</h2>
+    <input id="brand" placeholder="상호명 예: RENOVA">
+    <input id="phone1" placeholder="전화번호 1">
+    <input id="phone2" placeholder="전화번호 2">
+    <input id="blog" placeholder="네이버 블로그 주소">
+    <input id="kakao" placeholder="카카오 채널 주소">
+    <button onclick="saveSettings()">기본 정보 저장</button>
+  </section>
+
+  <section class="card">
+    <h2>시공사례 추가 / 이미지 추가</h2>
+    <input id="caseTitle" placeholder="제목 예: 상가철거 시공사례">
+    <textarea id="caseDesc" placeholder="설명 입력"></textarea>
+    <input id="caseImages" type="file" accept="image/*" multiple>
+    <p class="sub">사진은 최대 10장까지 등록됩니다.</p>
+    <button onclick="saveCase()">시공사례 저장</button>
+  </section>
+
+  <section class="card">
+    <h2>등록된 시공사례 / 이미지 편집</h2>
+    <div id="caseList"></div>
+  </section>
+</main>
+<script src="admin.js"></script>
+</body>
+</html>

@@ -1,2 +1,0 @@
-(function(){const d=new Date(),day=d.toISOString().slice(0,10);let s=JSON.parse(localStorage.getItem('renovaStats')||'{"total":0,"todayDate":"","today":0}');s.total=(s.total||0)+1;if(s.todayDate!==day){s.todayDate=day;s.today=0}s.today=(s.today||0)+1;s.last=d.toLocaleString('ko-KR');s.device=/Mobi|Android/i.test(navigator.userAgent)?'모바일':'PC';localStorage.setItem('renovaStats',JSON.stringify(s));})();
-document.getElementById('menu')?.addEventListener('click',()=>document.getElementById('nav').classList.toggle('open'));

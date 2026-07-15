@@ -1,0 +1,194 @@
+{
+  "site": {
+    "brand": "리노바",
+    "headline": "지역별 철거·원상복구 전문",
+    "subheadline": "상가·사무실·내부철거부터 폐기물 처리와 원상복구까지 책임시공",
+    "phone1": "010-8476-7456",
+    "phone2": "010-9169-7557",
+    "kakao": "http://pf.kakao.com/_VHqwX",
+    "blog": "https://blog.naver.com/camnuri26",
+    "heroImage": "assets/hero.jpg"
+  },
+  "regions": [
+    {
+      "slug": "namyangju",
+      "name": "남양주시"
+    },
+    {
+      "slug": "uijeongbu",
+      "name": "의정부시"
+    },
+    {
+      "slug": "goyang",
+      "name": "고양시"
+    },
+    {
+      "slug": "guri",
+      "name": "구리시"
+    },
+    {
+      "slug": "hanam",
+      "name": "하남시"
+    },
+    {
+      "slug": "yangju",
+      "name": "양주시"
+    },
+    {
+      "slug": "pocheon",
+      "name": "포천시"
+    },
+    {
+      "slug": "dongducheon",
+      "name": "동두천시"
+    },
+    {
+      "slug": "paju",
+      "name": "파주시"
+    },
+    {
+      "slug": "seoul",
+      "name": "서울시"
+    }
+  ],
+  "services": [
+    {
+      "id": "shop",
+      "title": "상가철거",
+      "desc": "매장·카페·식당의 집기, 벽체, 천장, 바닥을 안전하게 철거합니다.",
+      "cover": "assets/sample-shop-1.jpg",
+      "slides": [
+        {
+          "title": "철거 전",
+          "desc": "집기와 마감재 상태를 확인하고 공정 범위를 정합니다.",
+          "image": "assets/sample-shop-1.jpg"
+        },
+        {
+          "title": "철거 진행",
+          "desc": "집기·벽체·천장 철거를 순서대로 안전하게 진행합니다.",
+          "image": "assets/sample-shop-2.jpg"
+        },
+        {
+          "title": "철거 완료",
+          "desc": "폐기물을 반출하고 현장을 깔끔하게 정리합니다.",
+          "image": "assets/sample-shop-3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "office",
+      "title": "사무실철거",
+      "desc": "파티션·가구·천장 텍스·바닥재까지 깔끔하게 정리합니다.",
+      "cover": "assets/sample-office-1.jpg",
+      "slides": [
+        {
+          "title": "철거 전",
+          "desc": "사무공간 동선과 철거 범위를 확인합니다.",
+          "image": "assets/sample-office-1.jpg"
+        },
+        {
+          "title": "철거 진행",
+          "desc": "파티션과 천장 텍스, 집기를 철거합니다.",
+          "image": "assets/sample-office-2.jpg"
+        },
+        {
+          "title": "철거 완료",
+          "desc": "바닥과 벽면을 정리하고 반출을 마칩니다.",
+          "image": "assets/sample-office-3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "interior",
+      "title": "내부철거",
+      "desc": "집기 철거, 벽체 철거, 천장 철거를 공정별로 진행합니다.",
+      "cover": "assets/sample-interior-1.jpg",
+      "slides": [
+        {
+          "title": "집기 철거",
+          "desc": "가구와 집기를 분리·반출합니다.",
+          "image": "assets/sample-interior-1.jpg"
+        },
+        {
+          "title": "천장 철거",
+          "desc": "텍스와 경량철골, 설비 주변을 안전하게 해체합니다.",
+          "image": "assets/sample-interior-2.jpg"
+        },
+        {
+          "title": "벽체 철거",
+          "desc": "칸막이와 마감재를 철거하고 구조체를 정리합니다.",
+          "image": "assets/sample-interior-3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "restore",
+      "title": "원상복구",
+      "desc": "임대차 종료 공간을 계약 조건에 맞춰 정돈하고 복구합니다.",
+      "cover": "assets/sample-restore-1.jpg",
+      "slides": [
+        {
+          "title": "복구 전",
+          "desc": "임대 계약 조건과 기존 상태를 확인합니다.",
+          "image": "assets/sample-restore-1.jpg"
+        },
+        {
+          "title": "복구 진행",
+          "desc": "철거와 마감 보수를 함께 진행합니다.",
+          "image": "assets/sample-restore-2.jpg"
+        },
+        {
+          "title": "복구 완료",
+          "desc": "다음 임차가 가능한 깔끔한 공간으로 마무리합니다.",
+          "image": "assets/sample-restore-3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "waste",
+      "title": "폐기물처리",
+      "desc": "철거 폐기물을 분류·상차·운반하여 현장을 깔끔하게 마무리합니다.",
+      "cover": "assets/sample-waste-1.jpg",
+      "slides": [
+        {
+          "title": "폐기물 분류",
+          "desc": "종류별로 분리해 안전하게 적재합니다.",
+          "image": "assets/sample-waste-1.jpg"
+        },
+        {
+          "title": "수거·상차",
+          "desc": "현장 동선을 확보하고 신속하게 상차합니다.",
+          "image": "assets/sample-waste-2.jpg"
+        },
+        {
+          "title": "처리 완료",
+          "desc": "현장을 청소하고 반출 상태를 확인합니다.",
+          "image": "assets/sample-waste-3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "renovation",
+      "title": "인테리어",
+      "desc": "철거 이후 공간 목적에 맞춘 실용적인 리모델링을 제공합니다.",
+      "cover": "assets/sample-renovation-1.jpg",
+      "slides": [
+        {
+          "title": "시공 전",
+          "desc": "공간 목적과 예산을 확인합니다.",
+          "image": "assets/sample-renovation-1.jpg"
+        },
+        {
+          "title": "시공 중",
+          "desc": "목공·전기·도장·마감 공정을 진행합니다.",
+          "image": "assets/sample-renovation-2.jpg"
+        },
+        {
+          "title": "시공 완료",
+          "desc": "밝고 실용적인 공간으로 완성합니다.",
+          "image": "assets/sample-renovation-3.jpg"
+        }
+      ]
+    }
+  ]
+}

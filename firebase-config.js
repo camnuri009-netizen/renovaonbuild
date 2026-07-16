@@ -1,5 +1,5 @@
 export const firebaseConfig = {
-  apiKey: "AIzaSyB5gd0Y2FQnNO1p3oVWG3F03IU164BzM6w",
+  apiKey: "AIzaSyB6gd0Y2FQnNO1p3oVWG3F03IU164BzM6w",
   authDomain: "renova-cms.firebaseapp.com",
   projectId: "renova-cms",
   storageBucket: "renova-cms.firebasestorage.app",
